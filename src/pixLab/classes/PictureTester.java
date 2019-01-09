@@ -1,4 +1,5 @@
 package pixLab.classes;
+import java.awt.Color;
 /**
  * This class contains class (static) methods
  * that will help you test the Picture class 
@@ -9,6 +10,19 @@ package pixLab.classes;
  */
 public class PictureTester
 {
+	public static void testChromakey()
+	{
+		Picture source = new Picture("KR 555.png");
+		Picture background = new Picture("Showa Riders.jpg");
+		source.explore();
+		background.explore();
+		source.chromakey(background, Color.BLACK);
+		source.explore();
+	}
+	
+	
+	
+	
   /** Method to test zeroBlue */
   public static void testZeroBlue()
   {
@@ -16,6 +30,14 @@ public class PictureTester
     beach.explore();
     beach.zeroBlue();
     beach.explore();
+  }
+  
+  public static void testMirrorGull()
+  {
+	  Picture gull = new Picture("seagull.jpg");
+	  gull.explore();
+	  gull.mirrorHorizontal();
+	  gull.explore();
   }
   
   public static void textZeroRed()
@@ -67,15 +89,15 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
-    textZeroRed();
+    //testZeroBlue();
+    //textZeroRed();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
-    testMirrorVertical();
+    //testMirrorVertical();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
@@ -84,11 +106,12 @@ public class PictureTester
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
-    //testChromakey();
+    testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+	//
   }
 }

@@ -131,13 +131,25 @@ public class Picture extends SimplePicture
     } 
   }
   
-  public void mirrorVerticalRToL()
+  public void mirrorHorizontal()
   {
-	 Picture arch = new Picture("arch.jpg");
-	 arch.explore();
-	 arch.zeroBlue();
-	 arch.explore();
+	  Pixel [] [] pixels = this.getPixels2D();
+	  Pixel upPixel = null;
+	  Pixel downPixel = null;
+	  int height = pixels.length;
+	  
+	  for (int col = 0; col < pixels[0].length; col++)
+	  {
+		for (int row = 0; row < height / 2; row++)
+		{
+			upPixel = pixels [row][col];
+			downPixel = pixels [height - 1 - row][col];
+			downPixel.setColor(upPixel.getColor());
+		}
+	  }
   }
+  
+	  
   
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
@@ -239,6 +251,24 @@ public class Picture extends SimplePicture
   }
   
   
+  public void chromakey(Picture replacement, Color changeColor)
+  {
+	  Pixel [][]  mainPixels = this.getPixels2D();
+	  Pixel [][] replacementPixels = replacement.getPixels2D();
+	  
+	  for (int row = 0; row < mainPixels.length; row++)
+	  {
+		  for (int col = 0; col < mainPixels[0].length; col++)
+		  {
+			  if (mainPixels[row][col].colorDistance(changeColor) < 10)
+			  {
+				  mainPixels[row][col].setColor(replacementPixels[row][col].getColor()); 
+			  }
+		  }
+	  }
+	  
+  }
+  
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
@@ -249,5 +279,9 @@ public class Picture extends SimplePicture
     beach.zeroBlue();
     beach.explore();
   }
+ 
+  
+  
+  
   
 } // this } is the end of class Picture, put all new methods before this
