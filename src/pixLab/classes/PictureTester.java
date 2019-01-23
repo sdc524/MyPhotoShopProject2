@@ -20,6 +20,20 @@ public class PictureTester
 		source.explore();
 	}
 	
+	public static void testSteganography()
+	{
+		Picture source = new Picture("B&W Mountain.jpeg");
+		Picture message = new Picture("hide.jpg");
+		
+		source.explore();
+		message.explore();
+		source.hidePicture(message);
+		source.explore();
+		source.revealPicture();
+		source.explore();
+		
+	}
+	
 	
 	
 	
@@ -82,6 +96,13 @@ public class PictureTester
     swan.explore();
   }
   
+  /** Method to test the Grayscale */
+  public static void testGrayscale()
+  {
+	  
+  }
+  
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -90,7 +111,7 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-    //textZeroRed();
+    //testZeroRed();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
@@ -106,12 +127,12 @@ public class PictureTester
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
-    testChromakey();
+    //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
-	//
+	  testSteganography();
   }
 }
