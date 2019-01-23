@@ -335,6 +335,6 @@ public class Picture extends SimplePicture
  
  
   
-  
+   
   
 } // this } is the end of class Picture, put all new methods before this
